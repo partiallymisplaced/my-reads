@@ -10,7 +10,7 @@ class Book extends Component {
       <div>
         <div className="book">
           <div className="book-top">
-              <img className="book-cover" src={this.props.book.url} alt=""/>
+              <img className="book-cover" src={this.props.book.imageLinks.thumbnail} alt=""/>
               <div className="book-shelf-changer">
                 <select>
                   <option value="move" disabled>Move to...</option>
