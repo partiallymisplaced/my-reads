@@ -15,7 +15,7 @@ class Search extends Component {
 
   updateQuery = (query) => {
     this.setState({
-      query: query.trim()
+      query: query
       // const match = new RegExp(escapeRegExp(this.state.query), 'i')
       // searchResults = this.props.searchResults.filter(
       //   (searchResult) => match.test(searchResult.title)
@@ -29,7 +29,11 @@ class Search extends Component {
     BooksAPI
     .search(query)
     .then((searchResults) => {
-      this.setState({ searchResults });
+      if (searchResults.error) {
+        this.setState({ searchResults: [] })
+      } else {
+        this.setState({ searchResults });
+      }
     })
   } else {
     this.setState({ searchResults: [] })
