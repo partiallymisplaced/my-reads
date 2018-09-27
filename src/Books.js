@@ -7,6 +7,8 @@ import Search from './Search';
 
 class Books extends Component {
   render() {
+    console.log('props', this.props)
+    console.log(Array.isArray(this.props.books))
     return (
       <div>
         <div className="list-books">
@@ -20,11 +22,15 @@ class Books extends Component {
                 <h2 className="bookshelf-title">Currently Reading</h2>
                 <div className="bookshelf-books">
                   <ol className='books-grid'>
-                    {this.props.books
+                    {
+                      this.props.books
                       .filter(book => book.shelf === 'currentlyReading')
                       .map(book => (
                         <li key={book.id}>
-                          <Book book={book}/>
+                          <Book
+                            book={book}
+                            moveBook={this.props.moveBook}
+                          />
                         </li>
                       ))
                     }
@@ -40,7 +46,10 @@ class Books extends Component {
                       .filter(book => book.shelf === 'wantToRead')
                       .map(book => (
                         <li key={book.id}>
-                          <Book book={book}/>
+                          <Book
+                            book={book}
+                            moveBook={this.props.moveBook}
+                          />
                         </li>
                       ))
                     }
@@ -56,7 +65,10 @@ class Books extends Component {
                       .filter(book => book.shelf === 'read')
                       .map(book => (
                         <li key={book.id}>
-                          <Book book={book}/>
+                          <Book
+                            book={book}
+                            moveBook={this.props.moveBook}
+                          />
                         </li>
                       ))
                     }

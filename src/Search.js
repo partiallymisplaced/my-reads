@@ -62,7 +62,10 @@ class Search extends Component {
             {this.state.searchResults
               .map(searchResult => (
                 <li key={searchResult.id}>
-                  <Book book={searchResult}/>
+                  <Book
+                    book={searchResult}
+                    moveBook={this.props.moveBook}
+                  />
                 </li>
               ))
             }
