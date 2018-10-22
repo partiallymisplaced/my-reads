@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import * as BooksAPI from './BooksAPI';
 import './App.css';
@@ -22,12 +22,12 @@ class BooksApp extends React.Component {
 
   moveBook = (book, shelf) => {
     BooksAPI.update(book, shelf)
-    BooksAPI.getAll()
-    .then((books) => {
-      this.setState(() => {}
-         { books: books }
-      )
-    });
+    .then(() => {
+      BooksAPI.getAll()
+      .then((books) => {
+        this.setState({ books })
+      })
+    })
   }
 
   render() {
