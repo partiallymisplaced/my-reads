@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import escapeRegExp from 'escape-string-regexp';
+import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
-
 import Book from './Book';
 
 class Search extends Component {
@@ -16,29 +12,37 @@ class Search extends Component {
   updateQuery = (query) => {
     this.setState({
       query: query
-      // const match = new RegExp(escapeRegExp(this.state.query), 'i')
-      // searchResults = this.props.searchResults.filter(
-      //   (searchResult) => match.test(searchResult.title)
-      // )
     });
     this.getSearchResults(query);
   }
 
   getSearchResults = (query) => {
-  if (query) {
-    BooksAPI
-    .search(query)
-    .then((searchResults) => {
-      if (searchResults.error) {
-        this.setState({ searchResults: [] })
-      } else {
-        this.setState({ searchResults });
-      }
-    })
-  } else {
-    this.setState({ searchResults: [] })
-  }
+    if (query) {
+      BooksAPI
+      .search(query)
+      .then((searchResults) => {
+        if (searchResults.error) {
+          this.setState({ searchResults: [] })
+        } else {
 
+          for (let searchResult of searchResults) {
+            for (let book of this.props.books) {
+              if (searchResult.id === book.id) {
+                searchResult.shelf = book.shelf;
+                console.log(searchResult)
+              }
+            }
+            if (!searchResult.shelf) {
+              searchResult.shelf = 'none';
+            }
+          } 
+
+          this.setState({ searchResults });
+        }
+      })
+    } else {
+      this.setState({ searchResults: [] })
+    }
   }
 
 
