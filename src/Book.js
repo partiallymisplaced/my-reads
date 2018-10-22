@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-
-import { Books } from './Books';
 
 class Book extends Component {
   state = {
@@ -44,10 +40,6 @@ class Book extends Component {
       </div>
     );
   }
-}
-
-Book.PropTypes = {
-  book: PropTypes.object
 }
 
 export default Book;
