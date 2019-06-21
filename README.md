@@ -19,5 +19,5 @@ This project uses Udacity's starter template https://github.com/udacity/reactnd-
 
 ### Dependencies
 
-Dependencies are listed in this project's [package.json] (https://github.com/partiallymisplaced/my-reads/blob/master/package.json)
+Dependencies are listed in this project's [package.json](https://github.com/partiallymisplaced/my-reads/blob/master/package.json)
 
