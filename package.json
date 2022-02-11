@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1"
